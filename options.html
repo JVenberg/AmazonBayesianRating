@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bayesian Rating Comparator settings</title>
+  <link rel="icon" href="icon32.png">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header>
+      <img src="icon128.png" alt="" width="48" height="48">
+      <div>
+        <h1>Bayesian Rating Comparator</h1>
+        <p>Changes apply right away, including on Amazon tabs you already have open.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <label class="field">
+        <span class="field-title">Fake five-star ratings per product <output for="fakeFiveStars"></output></span>
+        <input type="range" id="fakeFiveStars" min="0" max="200" step="1">
+        <span class="help">Removed from every product before scoring. A small listing can lose most of its score, while a big one barely moves.</span>
+      </label>
+
+      <label class="field">
+        <span class="field-title">Starting rating <output for="priorMean"></output></span>
+        <input type="range" id="priorMean" min="2" max="4.8" step="0.1">
+        <span class="help">What a product is assumed to score before its ratings count. Raising it is kinder to new listings.</span>
+      </label>
+
+      <label class="field">
+        <span class="field-title">Starting rating weight <output for="priorStrength"></output></span>
+        <input type="range" id="priorStrength" min="1" max="100" step="1">
+        <span class="help">How many imaginary ratings the starting rating is worth. Higher means a product needs more real ratings to move away from it.</span>
+      </label>
+
+      <label class="field">
+        <span class="field-title">Likely range</span>
+        <select id="intervalPct">
+          <option value="80">80% sure</option>
+          <option value="90">90% sure</option>
+          <option value="95">95% sure</option>
+          <option value="99">99% sure</option>
+        </select>
+        <span class="help">How sure the range around each rating should be. Surer ranges are wider.</span>
+      </label>
+
+      <label class="field">
+        <span class="field-title">Rank products by</span>
+        <select id="rankBy">
+          <option value="mean">Expected rating</option>
+          <option value="lowEnd">Low end of the likely range (cautious)</option>
+          <option value="chance">Chance of being the best (favors long shots)</option>
+        </select>
+        <span class="help">Expected rating is the best single guess. The cautious option favors products with many ratings.</span>
+      </label>
+
+      <button type="button" id="reset">Reset to defaults</button>
+    </section>
+
+    <section class="card">
+      <h2>What these settings do</h2>
+      <table>
+        <thead>
+          <tr><th>Product</th><th>Amazon average</th><th>Expected rating</th></tr>
+        </thead>
+        <tbody id="examples"></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Assumptions you can't change</h2>
+      <ul>
+        <li>Stars are evenly spaced, so going from 1 to 2 stars counts as much as going from 4 to 5.</li>
+        <li>Fake ratings are always five-star, and every product gets the same allowance.</li>
+        <li>Apart from that, ratings are independent and honest. The tendency of very happy or very unhappy buyers to rate more often isn't modeled.</li>
+        <li>Every product starts from the same rating, whatever its category.</li>
+        <li>Rating counts are rebuilt from Amazon's rounded percentages, so they're approximate.</li>
+      </ul>
+    </section>
+  </main>
+  <script src="settings.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

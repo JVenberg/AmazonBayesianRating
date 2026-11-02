@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Bayesian Rating Comparator",
+  "version": "1.0.0",
+  "description": "Compares Amazon product ratings using Bayesian statistics. Shows which product is truly best with confidence intervals and P(best) for every search result.",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Bayesian Rating Comparator settings"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "host_permissions": [
+    "https://www.amazon.com/*",
+    "https://www.amazon.co.uk/*",
+    "https://www.amazon.ca/*",
+    "https://www.amazon.de/*",
+    "https://www.amazon.fr/*",
+    "https://www.amazon.co.jp/*",
+    "https://www.amazon.com.au/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.com/s?*",
+        "https://www.amazon.com/s/*",
+        "https://www.amazon.co.uk/s?*",
+        "https://www.amazon.co.uk/s/*",
+        "https://www.amazon.ca/s?*",
+        "https://www.amazon.ca/s/*",
+        "https://www.amazon.de/s?*",
+        "https://www.amazon.de/s/*",
+        "https://www.amazon.fr/s?*",
+        "https://www.amazon.fr/s/*",
+        "https://www.amazon.co.jp/s?*",
+        "https://www.amazon.co.jp/s/*",
+        "https://www.amazon.com.au/s?*",
+        "https://www.amazon.com.au/s/*"
+      ],
+      "js": ["settings.js", "content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <clipPath id="plate">
+    <rect width="128" height="128" rx="28"/>
+  </clipPath>
+  <g clip-path="url(#plate)">
+    <rect width="128" height="128" fill="#172554"/>
+    <path d="M0 108 C34 108 42 66 64 66 C86 66 94 108 128 108 V128 H0 Z" fill="#60A5FA"/>
+  </g>
+  <polygon
+    points="64,8 74.77,27.18 96.36,31.48 81.42,47.57 83.95,69.42 64,60.2 44.05,69.42 46.58,47.57 31.64,31.48 53.23,27.18"
+    fill="#FFC53D" stroke="#FFC53D" stroke-width="7" stroke-linejoin="round"
+  />
+</svg>

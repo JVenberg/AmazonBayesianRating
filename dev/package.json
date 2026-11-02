@@ -1,0 +1,11 @@
+{
+  "name": "bayesian-rating-dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "node preview.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.58"
+  }
+}
