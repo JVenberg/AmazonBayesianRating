@@ -85,3 +85,7 @@ npm run preview
 `npm run preview` runs the whole flow and exits with an error if any check fails: badges, selection, the ranking, page switching, reloads and settings. It saves screenshots to `dev/out/`. Run `node preview.mjs --headed` to watch it.
 
 The icons are drawn in `icon.svg`. After editing it, run `node render-icons.mjs` from `dev/` to regenerate the PNGs.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
